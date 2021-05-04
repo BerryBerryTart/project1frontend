@@ -11,7 +11,8 @@ import './App.css';
 import Login from './LoginUtils/Login';
 import Logout from './LoginUtils/Logout';
 import Home from './Home/Home';
-
+import TicketList from './Tickets/TicketList';
+import ReceiptView from './Tickets/ReceiptView';
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -63,6 +64,12 @@ function App() {
                     </Route>
                  <Route exact path="/register">
 
+                 </Route>
+                 <Route exact path="/tickets">
+                     <TicketList />
+                 </Route>
+                 <Route exact path="/tickets/receipt/:id">
+                     <ReceiptView />
                  </Route>
              </Switch>
          </Router>
