@@ -10,9 +10,12 @@ import './App.css';
 
 import Login from './LoginUtils/Login';
 import Logout from './LoginUtils/Logout';
+
 import Home from './Home/Home';
+
 import TicketList from './Tickets/TicketList';
 import ReceiptView from './Tickets/ReceiptView';
+import CreateTicket from './Tickets/CreateTicket';
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -38,6 +41,7 @@ function App() {
             <div id="navBox">
                  <Link className="navElement" to="/">Home</Link>
                  <Link className="navElement" to="/tickets">All Tickets</Link>
+                 <Link className="navElement" to="/create_ticket">New Ticket</Link>
                  {
                      loggedIn === true &&
                      <Link className="navElement" to="/logout">Logout</Link>
@@ -49,19 +53,18 @@ function App() {
              </div>
              <hr />
              <Switch>
-                 <Route exact path="/">
+                <Route exact path="/">
                     <Home />
-                 </Route>
-                 <Route exact path="/login">
+                </Route>
+                <Route exact path="/login">
                     <Login loginCheck={getLoginStatus}/>
-                 </Route>
-
-                    <Route exact path="/logout">
-                        <Logout loginCheck={getLoginStatus}/>
-                    </Route>
-                    <Route exact path="/login">
-                        <Login />
-                    </Route>
+                </Route>
+                <Route exact path="/logout">
+                    <Logout loginCheck={getLoginStatus}/>
+                </Route>
+                <Route exact path="/login">
+                    <Login />
+                </Route>
                  <Route exact path="/register">
 
                  </Route>
@@ -70,6 +73,9 @@ function App() {
                  </Route>
                  <Route exact path="/tickets/receipt/:id">
                      <ReceiptView />
+                 </Route>
+                 <Route exact path="/create_ticket">
+                     <CreateTicket />
                  </Route>
              </Switch>
          </Router>
