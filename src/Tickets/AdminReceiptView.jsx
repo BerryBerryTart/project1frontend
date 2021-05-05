@@ -35,9 +35,22 @@ export default function AdminReceiptView () {
         }
     }, [id, history]);
 
-    console.log(ticketData)
+    let handleApprove = (value) => {
+        async function putData() {
+            const res = await fetch('http://localhost:5000/update_ticket/'+ id,{
+                method: 'PUT',
+                credentials: 'include',
+                body: JSON.stringify({status: value})
+            });
+            res.json()
+            .then(res => setTicketData(res));
+        }
+        putData();
+    }
+
     return(
         <div>
+            <h2>Approve / Reject Reimursment #{ticketData.reimb_id}</h2>
             <div className="ticketBox">
                 { ticketData.type_id && ticketData.status_id &&
                 <div className="ticketTable">
@@ -50,6 +63,10 @@ export default function AdminReceiptView () {
                         <li className="list-group-item"><b>Submitted By: </b> {String(ticketData.author.first_name + ' ' + ticketData.author.last_name)} </li>
                         <li className="list-group-item"><b>Resolved: </b><FormatDate created={ticketData.resolved} /></li>
                         <li className="list-group-item"><b>Resolved By: </b>{ticketData.resolver ?  String(ticketData.resolver.first_name + ' ' + ticketData.resolver.last_name) : ''}</li>
+                        <li className="list-group-item"><div className="approveBox">
+                            <button className="btn btn-success approveBtn" onClick={() => handleApprove("COMPLETED")}>APPROVE</button>
+                            <button className="btn btn-danger approveBtn" onClick={() => handleApprove("REJECTED")}>REJECT</button>
+                        </div></li>
                     </ul>
                 </div>
                 }
