@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import TicketTableFragment from './TicketTableFragment';
+import TicketTableFragment from './AdminTicketTableFragment';
 
-export default function TicketList(){
+export default function AdminTicketList(){
     const [data, setData] = useState({"Reimbursements": []});
     const [filterState, setFilterState] = useState("ALL");
 
@@ -12,7 +12,7 @@ export default function TicketList(){
         const loggedInUser = localStorage.getItem('user');
         if (loggedInUser){
             async function fetchData(){
-                const res = await fetch('http://localhost:5000/get_ticket_status',{
+                const res = await fetch('http://localhost:5000/view_ticket',{
                     method: 'GET',
                     credentials: 'include'
                 })
@@ -39,7 +39,7 @@ export default function TicketList(){
 
     return(
         <div>
-            <h2>Your Tickets</h2>
+            <h2>Admin Ticket View</h2>
             <div className='filterBox'>
                 <div className='dropdown'>
                     <button
@@ -70,6 +70,7 @@ export default function TicketList(){
                         <th>Type</th>
                         <th>Status</th>
                         <th>Submitted</th>
+                        <th>Submitted By</th>
                         <th>Resolved</th>
                         <th>Resolved By</th>
                         <th>Receipt</th>
