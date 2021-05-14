@@ -26,7 +26,7 @@ export default function Register(){
         const data={first_name, last_name, email, username, password};
         console.log(JSON.stringify(data));
         async function postData(){
-            const res = await fetch('http://localhost:5000/register_acc', {
+            const res = await fetch('/register_acc', {
                 method: 'POST',
                 body: JSON.stringify(data)
             });

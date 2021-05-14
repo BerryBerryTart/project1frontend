@@ -12,7 +12,7 @@ export default function TicketList(){
         const loggedInUser = localStorage.getItem('user');
         if (loggedInUser){
             async function fetchData(){
-                const res = await fetch('http://localhost:5000/get_ticket_status',{
+                const res = await fetch('/get_ticket_status',{
                     method: 'GET',
                     credentials: 'include'
                 })

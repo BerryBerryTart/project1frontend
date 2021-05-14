@@ -12,7 +12,7 @@ export default function AdminTicketList(){
         const loggedInUser = localStorage.getItem('user');
         if (loggedInUser){
             async function fetchData(){
-                const res = await fetch('http://localhost:5000/view_ticket',{
+                const res = await fetch('/view_ticket',{
                     method: 'GET',
                     credentials: 'include'
                 })

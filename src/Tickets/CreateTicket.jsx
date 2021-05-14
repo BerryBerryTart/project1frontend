@@ -29,7 +29,7 @@ export default function CreateTicket(){
         const data = {amount, description, type, receipt};
 
         async function postData(){
-            await fetch('http://localhost:5000/add_ticket', {
+            await fetch('/add_ticket', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 credentials: 'include'

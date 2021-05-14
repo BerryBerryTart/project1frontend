@@ -34,7 +34,7 @@ export default function Login ({loginCheck}) {
 
         const data = {username, password};
         async function fetchData(){
-            const res = await fetch('http://localhost:5000/login_acc', {
+            const res = await fetch('/login_acc', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 credentials: 'include'

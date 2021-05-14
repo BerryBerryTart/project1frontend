@@ -6,7 +6,7 @@ export default function Logout ({loginCheck}) {
 
     useEffect(() => {
         async function logMeOut(){
-            await fetch('http://localhost:5000/logout_acc',
+            await fetch('/logout_acc',
             {
                 method: 'POST',
                 credentials: 'include'
