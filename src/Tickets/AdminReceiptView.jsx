@@ -15,14 +15,14 @@ export default function AdminReceiptView () {
         const loggedInUser = localStorage.getItem('user');
         if (loggedInUser){
             async function fetchData(){
-                const res = await fetch('http://localhost:5000/ticket_blob/' + id, {
+                const res = await fetch('/ticket_blob/' + id, {
                     method: 'GET',
                     credentials: 'include'
                 });
                 res.json()
                 .then(res => setBlobData(res));
 
-                const res1 = await fetch('http://localhost:5000/view_ticket/' + id, {
+                const res1 = await fetch('/view_ticket/' + id, {
                     method: 'GET',
                     credentials: 'include'
                 });
@@ -37,7 +37,7 @@ export default function AdminReceiptView () {
 
     let handleApprove = (value) => {
         async function putData() {
-            const res = await fetch('http://localhost:5000/update_ticket/'+ id,{
+            const res = await fetch('/update_ticket/'+ id,{
                 method: 'PUT',
                 credentials: 'include',
                 body: JSON.stringify({status: value})

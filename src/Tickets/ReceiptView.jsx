@@ -15,14 +15,13 @@ export default function ReceiptView () {
         const loggedInUser = localStorage.getItem('user');
         if (loggedInUser){
             async function fetchData(){
-                const res = await fetch('http://localhost:5000/ticket_blob/' + id, {
+                const res = await fetch('/ticket_blob/' + id, {
                     method: 'GET',
                     credentials: 'include'
                 });
                 res.json()
                 .then(res => setBlobData(res));
-
-                const res1 = await fetch('http://localhost:5000/get_ticket_status/' + id, {
+                const res1 = await fetch('/get_ticket_status/' + id, {
                     method: 'GET',
                     credentials: 'include'
                 });
